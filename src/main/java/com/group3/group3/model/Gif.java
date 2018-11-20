@@ -12,6 +12,10 @@ public class Gif {
     public Gif() {
     }
 
+    public Gif(String file) {
+        this.file = file;
+    }
+
     public Gif(String author, String title, String file, String comment) {
         this.author = author;
         this.title = title;

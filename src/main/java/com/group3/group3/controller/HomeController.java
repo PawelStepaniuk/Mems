@@ -17,7 +17,8 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    List<Gif> gifs = new GifDaoImpl().generateGifs();
+   // List<Gif> gifs = new GifDaoImpl().generateGifs();
+
     @GetMapping("/")
     public String home(ModelMap map) {
 
