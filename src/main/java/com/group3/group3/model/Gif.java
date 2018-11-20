@@ -1,5 +1,7 @@
 package com.group3.group3.model;
 
+import com.group3.group3.dao.GifDao;
+
 public class Gif {
 
     private String author;

@@ -47,16 +47,19 @@
     <div class="row">
         <h1>Miejsce na wyświetlenie gifów:)</h1>
 
-        <!--<table>-->
-            <!--<th:block th:each="gif : ${gifs}">-->
-                <!--<tr>-->
-                    <!--<td th:text="${gif.title}">...</td>-->
-                    <!--<td th:text="${gif.author}">...</td>-->
+        <table>
+            <th:block th:each="gif : ${gifs}">
+                <tr>
+                    <td th:text="${gif.title}">...</td>
+                    <td th:text="${gif.author}">...</td>
+                    <!--<img th:src="@{${'/img/icons/' + subTask.issueTypeId + '.png'}}" title="TODO" />-->
+
+                    <img th:src= "@{${'/gifs/' + gif.file +'.gif'}}" />
                     <!--<td th:text="${gif.file}">...</td>-->
-                    <!--<td th:text="${gif.comment}">...</td>-->
-                <!--</tr>-->
-            <!--</th:block>-->
-        <!--</table>-->
+                    <td th:text="${gif.comment}">...</td>
+                </tr>
+            </th:block>
+        </table>
     </div>
 </div>
 
