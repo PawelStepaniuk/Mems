@@ -12,6 +12,7 @@ import static com.group3.group3.dao.GifDaoImpl.gifList;
 
 public class GifsFromFiles implements GifDao {
     static List<Gif> gifList = new ArrayList<>();
+
     @Override
     public void add(Gif gif) {
 
@@ -22,32 +23,36 @@ public class GifsFromFiles implements GifDao {
         return gifList;
     }
 
+
+    //Pobieramy nazwy plików z katalogu gifs
     @Override
     public List<Gif> generateGifs() {
-        List<Gif> fileList = new ArrayList<>();
-
-        return fileList;
-    }
-
-    public List<String> fileList(){
+        List<Gif> nameList = new ArrayList<>();
         File f = new File("src\\main\\resources\\static\\gifs");
-        List<String> fileList = new ArrayList<>();
 
         for (int i = 0; i < f.list().length; i++) {
             if (f.list()[i].endsWith(".gif")) {
-                fileList.add(f.list()[i]);
+                int len = f.list()[i].length();
+                String nameGif = f.list()[i].substring(0, len - 4);
+                nameList.add(new Gif(nameGif));
             }
+
         }
-        return fileList;
+        return nameList;
     }
 
-    public List<Gif> gifsFromFile(){
 
-        for (int i = 0; i < fileList().size(); i++) {
-           findAll().add(new Gif(fileList().get(i)));
+//            public List<String> fileList () {
+//                File f = new File("src\\main\\resources\\static\\gifs");
+//                List<String> fileList = new ArrayList<>();
+//
+//                for (int i = 0; i < gifList.size(); i++) {
+//                    if (gifList.get(i).getFile().endsWith(".gif")) {
+//                        fileList.add(gifList.get(i).getFile());
+//                    }
+//                }
+//                return fileList;
+//            }
+
         }
-        return gifList;
-    }
-
-}
 
