@@ -4,16 +4,20 @@ import com.group3.group3.dao.CategoryDaoImpl;
 import com.group3.group3.dao.GifDao;
 import com.group3.group3.dao.GifDaoImpl;
 import com.group3.group3.dao.GifsFromFiles;
+
 import com.group3.group3.model.Category;
 import com.group3.group3.model.Gif;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
+
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
+
 import java.util.List;
 // Po wpisaniu ścieżki głównej wyświetla wszystkie memy. Warto skorzystać z pliku home.html
 // Powinien zostać utworzony model Gif oraz interfejs GifDao,
@@ -27,11 +31,7 @@ public class HomeController {
    // CategoryDaoImpl category = new CategoryDaoImpl();
     static List<Category> category = new CategoryDaoImpl().generateCategories();
 
-    @GetMapping("/")
-    public String home(ModelMap map) {
-        map.put("gifs",gifsFromFiles.generateGifs());
-        return "home";
-    }
+
 
     @GetMapping("/categories")
     public String showCategories(ModelMap map) {
@@ -40,5 +40,22 @@ public class HomeController {
     }
 
 
+    @GetMapping("/")
+    public String home(ModelMap map) {
 
+        map.put("gifs", gifsFromFiles.generateGifs());
+        return "home";
+    }
+
+    @RequestMapping("/gif/{name}")
+    public String gif(@PathVariable String name, ModelMap map){
+
+        Gif gif = gifsFromFiles.findGif(name);
+     //   System.out.println("Szukamy gifu o nazwie "+ name + " i znalazło: " + gif.toString());
+     //   System.out.println("----------------------");
+     //   System.out.println("Gif który przekazujemy do html"+gif.toString());
+        map.put("gif",gif);
+        return "gif";
+
+    }
 }
