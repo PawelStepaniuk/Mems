@@ -2,6 +2,7 @@ package com.group3.group3.controller;
 
 import com.group3.group3.dao.GifDao;
 import com.group3.group3.dao.GifDaoImpl;
+import com.group3.group3.dao.GifsFromFiles;
 import com.group3.group3.model.Gif;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,12 +18,13 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-   // List<Gif> gifs = new GifDaoImpl().generateGifs();
+    // private GifDaoImpl gifDao = new GifDaoImpl();
+     private GifsFromFiles gifsFromFiles = new GifsFromFiles();
 
     @GetMapping("/")
     public String home(ModelMap map) {
 
-        map.put("gifs",gifs);
+        map.put("gifs", gifsFromFiles.generateGifs());
         return "home";
     }
 

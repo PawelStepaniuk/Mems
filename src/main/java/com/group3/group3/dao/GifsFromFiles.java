@@ -9,9 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.group3.group3.dao.GifDaoImpl.gifList;
-
+//Klasa odpowiada za odczytanie plików z folderu Gifs
 public class GifsFromFiles implements GifDao {
     static List<Gif> gifList = new ArrayList<>();
+
     @Override
     public void add(Gif gif) {
 
@@ -22,31 +23,23 @@ public class GifsFromFiles implements GifDao {
         return gifList;
     }
 
+
+    //Pobieramy nazwy plików z katalogu gifs, sprawdzamy rozszerzenie, jeżeli plik jest rozszerzenia .gif to z nazwy
+    //pliku usuwany rozszerzenie i dodajemy do listy
     @Override
     public List<Gif> generateGifs() {
-        List<Gif> fileList = new ArrayList<>();
-
-        return fileList;
-    }
-
-    public List<String> fileList(){
+        List<Gif> nameList = new ArrayList<>();
         File f = new File("src\\main\\resources\\static\\gifs");
-        List<String> fileList = new ArrayList<>();
 
         for (int i = 0; i < f.list().length; i++) {
             if (f.list()[i].endsWith(".gif")) {
-                fileList.add(f.list()[i]);
+                int len = f.list()[i].length();
+                String nameGif = f.list()[i].substring(0, len - 4);
+                nameList.add(new Gif(nameGif));
             }
-        }
-        return fileList;
-    }
 
-    public List<Gif> gifsFromFile(){
-
-        for (int i = 0; i < fileList().size(); i++) {
-           findAll().add(new Gif(fileList().get(i)));
         }
-        return gifList;
+        return nameList;
     }
 
 }
