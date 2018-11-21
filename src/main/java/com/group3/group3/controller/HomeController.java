@@ -18,13 +18,13 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-   // List<Gif> gifs = new GifDaoImpl().generateGifs();
-   GifsFromFiles gifsFromFiles = new GifsFromFiles();
+    // private GifDaoImpl gifDao = new GifDaoImpl();
+     private GifsFromFiles gifsFromFiles = new GifsFromFiles();
 
     @GetMapping("/")
     public String home(ModelMap map) {
 
-        map.put("gifs",gifsFromFiles.generateGifs());
+        map.put("gifs", gifsFromFiles.generateGifs());
         return "home";
     }
 
