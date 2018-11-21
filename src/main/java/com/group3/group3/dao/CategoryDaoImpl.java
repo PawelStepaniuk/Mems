@@ -26,4 +26,9 @@ public class CategoryDaoImpl implements CategoryDao {
         listCategories.add(new Category(3L, "Programming"));
         return listCategories;
     }
+
+    public List<Category> returnList(){
+        return listCategories;
+    }
+
 }

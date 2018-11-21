@@ -9,6 +9,9 @@ import com.group3.group3.model.Gif;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +24,8 @@ import java.util.List;
 public class HomeController {
 
     GifsFromFiles gifsFromFiles = new GifsFromFiles();
-    CategoryDaoImpl category = new CategoryDaoImpl();
-
+   // CategoryDaoImpl category = new CategoryDaoImpl();
+    static List<Category> category = new CategoryDaoImpl().generateCategories();
 
     @GetMapping("/")
     public String home(ModelMap map) {
@@ -30,13 +33,11 @@ public class HomeController {
         return "home";
     }
 
-
     @GetMapping("/categories")
     public String showCategories(ModelMap map) {
-        map.put("categories", category.generateCategories());
-        return "redirect:/categories";
+            map.addAttribute("categories", category);
+        return "categories";
     }
-
 
 
 
