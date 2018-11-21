@@ -35,12 +35,12 @@ public class HomeController {
     public String gif(@PathVariable String name, ModelMap map){
 
         Gif gif = gifsFromFiles.findGif(name);
-        gif.setAuthor("Tymczasowy_Autor");
-        gif.setComment("Tymczasowy_Komentarz");
-        gif.setName("Tymczasowa_Nazwa");
-        System.out.println("Szukamy gifu o nazwie "+ name + " i znalazło: " + gif.toString());
+     //   System.out.println("Szukamy gifu o nazwie "+ name + " i znalazło: " + gif.toString());
+     //   System.out.println("----------------------");
+     //   System.out.println("Gif który przekazujemy do html"+gif.toString());
         map.put("gif",gif);
-        return "home";
+        return "gif";
+
     }
 
 }

@@ -60,5 +60,6 @@ catch (NullPointerException e){
         }
         return foundGif;
     }
+
 }
 

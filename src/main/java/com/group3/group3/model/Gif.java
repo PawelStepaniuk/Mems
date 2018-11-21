@@ -12,6 +12,9 @@ public class Gif {
 
     public Gif(String file) {
         this.file = file;
+        this.name="Przykładowa nazwa";
+        this.author="Przykładowy autor";
+        this.comment="Przykładowy komentarz";
     }
 
     public Gif(String author, String title, String file, String comment) {
