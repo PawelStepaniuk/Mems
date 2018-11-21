@@ -7,6 +7,9 @@ import com.group3.group3.model.Gif;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,18 @@ public class HomeController {
     public String home(ModelMap map) {
 
         map.put("gifs", gifsFromFiles.generateGifs());
+        return "home";
+    }
+
+    @RequestMapping("/gif/{name}")
+    public String gif(@PathVariable String name, ModelMap map){
+
+        Gif gif = gifsFromFiles.findGif(name);
+        gif.setAuthor("Tymczasowy_Autor");
+        gif.setComment("Tymczasowy_Komentarz");
+        gif.setName("Tymczasowa_Nazwa");
+        System.out.println("Szukamy gifu o nazwie "+ name + " i znalazło: " + gif.toString());
+        map.put("gif",gif);
         return "home";
     }
 
