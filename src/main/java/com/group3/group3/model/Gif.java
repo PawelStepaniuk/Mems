@@ -8,6 +8,8 @@ public class Gif {
     private String title;
     private String file;
     private String comment;
+    private Long idCategory;
+
 
     public Gif() {
     }
@@ -21,6 +23,14 @@ public class Gif {
         this.title = title;
         this.file = file;
         this.comment = comment;
+    }
+
+    public Gif(String author, String title, String file, String comment, Long idCategory) {
+        this.author = author;
+        this.title = title;
+        this.file = file;
+        this.comment = comment;
+        this.idCategory = idCategory;
     }
 
     public String getAuthor() {
@@ -53,6 +63,14 @@ public class Gif {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Long getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(Long idCategory) {
+        this.idCategory = idCategory;
     }
 
     @Override

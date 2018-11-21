@@ -21,15 +21,14 @@ public class GifDaoImpl implements GifDao {
 
     @Override
     public List<Gif> generateGifs() {
-        gifList.add(new Gif("tomasz","kodowanie","android-explosion","Konkurs"));
-        gifList.add(new Gif("paweł","potem napisze","ben-and-mike","Koncert"));
-        gifList.add(new Gif("ilona","cokolowiek","book-dominos","Akademia"));
-        gifList.add(new Gif("tomasz","kodowanie","compiler-bot","Konkurs"));
-        gifList.add(new Gif("paweł","potem napisze","cowboy-coder","Koncert"));
-        gifList.add(new Gif("ilona","cokolowiek","infinite-andrew","Akademia"));
-return gifList;
+        gifList.add(new Gif("tomasz","kodowanie","android-explosion","Konkurs", 1L));
+        gifList.add(new Gif("paweł","potem napisze","ben-and-mike","Koncert", 2L));
+        gifList.add(new Gif("ilona","cokolowiek","book-dominos","Akademia",1L));
+        gifList.add(new Gif("tomasz","kodowanie","compiler-bot","Konkurs",1L));
+        gifList.add(new Gif("paweł","potem napisze","cowboy-coder","Koncert", 2L));
+        gifList.add(new Gif("ilona","cokolowiek","infinite-andrew","Akademia", 3L));
+        return gifList;
     }
-
 
 
 
