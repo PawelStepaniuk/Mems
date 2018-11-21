@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.group3.group3.dao.GifDaoImpl.gifList;
+
 //Klasa odpowiada za odczytanie plików z folderu Gifs
 public class GifsFromFiles implements GifDao {
     static List<Gif> gifList = new ArrayList<>();
@@ -30,16 +31,34 @@ public class GifsFromFiles implements GifDao {
     public List<Gif> generateGifs() {
         List<Gif> nameList = new ArrayList<>();
         File f = new File("src\\main\\resources\\static\\gifs");
-
-        for (int i = 0; i < f.list().length; i++) {
-            if (f.list()[i].endsWith(".gif")) {
-                int len = f.list()[i].length();
-                String nameGif = f.list()[i].substring(0, len - 4);
-                nameList.add(new Gif(nameGif));
-            }
-
+try {
+    for (int i = 0; i < f.list().length; i++) {
+        if (f.list()[i].endsWith(".gif")) {
+            int len = f.list()[i].length();
+            String nameGif = f.list()[i].substring(0, len - 4);
+            nameList.add(new Gif(nameGif));
         }
+
+    }
+}
+catch (NullPointerException e){
+    System.out.println(e.getMessage() + "Folder jest pusty");
+}
         return nameList;
+    }
+
+    public Gif findGif(String name) {
+        Gif foundGif = new Gif();
+        try {
+            for (int i = 0; i < generateGifs().size(); i++) {
+                if (generateGifs().get(i).getFile().equals(name)) {
+                    foundGif = generateGifs().get(i);
+                }
+            }
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage() + "NullPointerException founded");
+        }
+        return foundGif;
     }
 
 }

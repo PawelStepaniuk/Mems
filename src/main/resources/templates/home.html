@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" th:href="@{/app.css}"/>
 
-    <title>giflib | Home</title>
+    <name>giflib | Home</name>
 </head>
 <body>
 <div class="navbar-fixed">
@@ -50,9 +50,9 @@
         <table>
             <th:block th:each="gif : ${gifs}">
                 <tr>
-                    <td th:text="${gif.title}">...</td>
+                    <td th:text="${gif.name}">...</td>
                     <td th:text="${gif.author}">...</td>
-                    <!--<img th:src="@{${'/img/icons/' + subTask.issueTypeId + '.png'}}" title="TODO" />-->
+                    <!--<img th:src="@{${'/img/icons/' + subTask.issueTypeId + '.png'}}" name="TODO" />-->
 
                     <img th:src= "@{${'/gifs/' + gif.file +'.gif'}}" />
                     <!--<td th:text="${gif.file}">...</td>-->

@@ -1,11 +1,9 @@
 package com.group3.group3.model;
 
-import com.group3.group3.dao.GifDao;
-
 public class Gif {
 
     private String author;
-    private String title;
+    private String name;
     private String file;
     private String comment;
 
@@ -14,11 +12,14 @@ public class Gif {
 
     public Gif(String file) {
         this.file = file;
+        this.name="Przykładowa nazwa";
+        this.author="Przykładowy autor";
+        this.comment="Przykładowy komentarz";
     }
 
     public Gif(String author, String title, String file, String comment) {
         this.author = author;
-        this.title = title;
+        this.name = title;
         this.file = file;
         this.comment = comment;
     }
@@ -31,12 +32,12 @@ public class Gif {
         this.author = author;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getFile() {
@@ -59,7 +60,7 @@ public class Gif {
     public String toString() {
         return "Gif{" +
                 "author='" + author + '\'' +
-                ", title='" + title + '\'' +
+                ", name='" + name + '\'' +
                 ", file='" + file + '\'' +
                 ", comment='" + comment + '\'' +
                 '}';
