@@ -44,23 +44,15 @@
     </div>
 </div>
 <div class="gifs container">
-    <div class="row">
-        <h1>Miejsce na wyświetlenie gifów:)</h1>
-
-        <table>
-            <th:block>
-                <tr>
-                    <td th:text="${gif.name}">...</td>
-                    <td th:text="${gif.author}">...</td>
-                    <!--<img th:src="@{${'/img/icons/' + subTask.issueTypeId + '.png'}}" name="TODO" />-->
-
-                    <img th:src= "@{${'/gifs/' + gif.file +'.gif'}}" />
-                    <!--<td th:text="${gif.file}">...</td>-->
-                    <td th:text="${gif.comment}">...</td>
-                </tr>
-            </th:block>
-        </table>
-    </div>
+    <table>
+        <th:block>
+            <tr>
+                <h1 style="text-align: center"><p th:text="${gif.name}"></p></h1>
+                <img th:src="@{${'/gifs/' + gif.file +'.gif'}}"/>
+                <p th:text="${gif.author}"></p>
+            </tr>
+        </th:block>
+    </table>
 </div>
 
 <script th:src="@{/vendor/jquery/jquery-1.11.3.js}"></script>
