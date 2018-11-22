@@ -34,7 +34,7 @@
     <div class="search-bar container">
         <div class="row">
             <div class="col s12">
-                <form action="/favorites" method="get">
+                <form action="#" method="get">
                     <div class="input-field">
                         <input name="q" type="search" placeholder="Wyszukiwanie..." required="required" autocomplete="off"/>
                         <i class="material-icons">search</i>
@@ -48,13 +48,9 @@
             <table>
                 <th:block th:each="gif : ${gifs}">
                     <tr>
-                        <td th:text="${gif.title}">...</td>
-                        <td th:text="${gif.author}">...</td>
-                        <!--<img th:src="@{${'/img/icons/' + subTask.issueTypeId + '.png'}}" title="TODO" />-->
-
+                        <p th:text="${gif.author}"></p>
                         <img th:src= "@{${'/gifs/' + gif.file +'.gif'}}" />
-                        <!--<td th:text="${gif.file}">...</td>-->
-                        <td th:text="${gif.comment}">...</td>
+                        <p th:text="${gif.comment}"></p>
                     </tr>
                 </th:block>
             </table>

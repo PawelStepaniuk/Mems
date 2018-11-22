@@ -25,16 +25,16 @@ public class Gif {
         this.comment="Przykładowy komentarz";
     }
 
-    public Gif(String author, String title, String file, String comment) {
+    public Gif(String author, String name, String file, String comment) {
         this.author = author;
-        this.name = title;
+        this.name = name;
         this.file = file;
         this.comment = comment;
     }
 
-    public Gif(String author, String title, String file, String comment, boolean favorite) {
+    public Gif(String author, String name, String file, String comment, boolean favorite) {
         this.author = author;
-        this.title = title;
+        this.name = name;
         this.file = file;
         this.comment = comment;
         this.favorite = favorite;
@@ -79,7 +79,7 @@ public class Gif {
                 ", name='" + name + '\'' +
                 ", file='" + file + '\'' +
                 ", comment='" + comment + '\'' +
+                ", favorite=" + favorite +
                 '}';
     }
-
 }
