@@ -15,18 +15,19 @@ public class GifDaoImpl implements GifDao {
     }
 
     @Override
-    public List<Gif> findAll() {
-        return gifList;
+    public Gif findGif(String name) {
+        Gif gif = new Gif();
+        return gif;
     }
 
     @Override
     public List<Gif> generateGifs() {
-        gifList.add(new Gif("tomasz","kodowanie","android-explosion","Konkurs", 1L));
-        gifList.add(new Gif("paweł","potem napisze","ben-and-mike","Koncert", 2L));
-        gifList.add(new Gif("ilona","cokolowiek","book-dominos","Akademia",1L));
-        gifList.add(new Gif("tomasz","kodowanie","compiler-bot","Konkurs",1L));
-        gifList.add(new Gif("paweł","potem napisze","cowboy-coder","Koncert", 2L));
-        gifList.add(new Gif("ilona","cokolowiek","infinite-andrew","Akademia", 3L));
+        gifList.add(new Gif("tomasz","kodowanie","android-explosion","Konkurs", 1,true));
+        gifList.add(new Gif("paweł","potem napisze","ben-and-mike","Koncert", 2,true));
+        gifList.add(new Gif("ilona","cokolowiek","book-dominos","Akademia",1,true));
+        gifList.add(new Gif("tomasz","kodowanie","compiler-bot","Konkurs",1));
+        gifList.add(new Gif("paweł","potem napisze","cowboy-coder","Koncert", 2));
+        gifList.add(new Gif("ilona","cokolowiek","infinite-andrew","Akademia", 3));
         return gifList;
     }
 
