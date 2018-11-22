@@ -2,7 +2,7 @@ package com.group3.group3.model;
 
 public class Category {
 
-    private Long id;
+    private int id;
     private String name;
 
     public Category(){
@@ -12,16 +12,16 @@ public class Category {
         this.name = name;
     }
 
-    public Category(Long id, String name) {
+    public Category(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

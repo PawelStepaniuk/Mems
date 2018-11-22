@@ -6,7 +6,7 @@ public class Gif {
     private String name;
     private String file;
     private String comment;
-    private Long idCategory;
+    private int idCategory;
 
 
     public Gif() {
@@ -26,7 +26,7 @@ public class Gif {
         this.comment = comment;
     }
 
-    public Gif(String author, String name, String file, String comment, Long idCategory) {
+    public Gif(String author, String name, String file, String comment, int idCategory) {
         this.author = author;
         this.name = name;
         this.file = file;
@@ -66,11 +66,11 @@ public class Gif {
         this.comment = comment;
     }
 
-    public Long getIdCategory() {
+    public int getIdCategory() {
         return idCategory;
     }
 
-    public void setIdCategory(Long idCategory) {
+    public void setIdCategory(int idCategory) {
         this.idCategory = idCategory;
     }
 

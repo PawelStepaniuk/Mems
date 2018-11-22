@@ -12,12 +12,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-
+import java.util.ArrayList;
 import java.util.List;
 // Po wpisaniu ścieżki głównej wyświetla wszystkie memy. Warto skorzystać z pliku home.html
 // Powinien zostać utworzony model Gif oraz interfejs GifDao,
@@ -28,14 +27,15 @@ import java.util.List;
 public class HomeController {
 
     GifsFromFiles gifsFromFiles = new GifsFromFiles();
-   // CategoryDaoImpl category = new CategoryDaoImpl();
+    // CategoryDaoImpl category = new CategoryDaoImpl();
     static List<Category> category = new CategoryDaoImpl().generateCategories();
+    CategoryDaoImpl categoryFromImpl = new CategoryDaoImpl();
 
 
 
     @GetMapping("/categories")
     public String showCategories(ModelMap map) {
-            map.addAttribute("categories", category);
+        map.addAttribute("categories", category);
         return "categories";
     }
 
@@ -48,14 +48,56 @@ public class HomeController {
     }
 
     @RequestMapping("/gif/{name}")
-    public String gif(@PathVariable String name, ModelMap map){
-
+    public String gif(@PathVariable String name, ModelMap map) {
         Gif gif = gifsFromFiles.findGif(name);
-     //   System.out.println("Szukamy gifu o nazwie "+ name + " i znalazło: " + gif.toString());
-     //   System.out.println("----------------------");
-     //   System.out.println("Gif który przekazujemy do html"+gif.toString());
-        map.put("gif",gif);
+        //   System.out.println("Szukamy gifu o nazwie "+ name + " i znalazło: " + gif.toString());
+        //   System.out.println("----------------------");
+        //   System.out.println("Gif który przekazujemy do html"+gif.toString());
+        map.put("gif", gif);
         return "gif";
+    }
+
+    @GetMapping("/category/{id}")
+        public String categoryById(@PathVariable int id, ModelMap map) {
+        Category category = categoryFromImpl.generateCategories().get(id);
+        Gif gifs = new Gif();
+
+
+        map.put("category", category);
+        return "category";
+    }
+
+        /*
+        List<Gif> newGif = new GifDaoImpl().generateGifs();
+        List<Gif> gifToShow = new ArrayList<>();
+        for (Gif gif : newGif){
+            if(id == gif.getIdCategory()){
+                gifToShow.add(gif);
+            }
+        }
+
+        map.put("category.name", gifToShow);
+
+        return "category";
+        }
+
+        /*
+        List<Gif> newGif = new GifDaoImpl().generateGifs();
+        List<Gif> gifToShow = new ArrayList<>();
+        for (Gif gif : newGif){
+            if(id == gif.getIdCategory()){
+                gifToShow.add(gif);
+            }
+        }
+
 
     }
+    /*    Category cat = categoryFromImpl.findCategory(id);
+        map.put("category", cat);
+        return "category";
+    }*/
 }
+
+
+
+

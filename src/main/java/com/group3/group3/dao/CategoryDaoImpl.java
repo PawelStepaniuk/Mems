@@ -21,14 +21,30 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public List<Category> generateCategories() {
-        listCategories.add(new Category(1L, "Android"));
-        listCategories.add(new Category(2L, "Funny"));
-        listCategories.add(new Category(3L, "Programming"));
+        listCategories.add(new Category(1, "Android"));
+        listCategories.add(new Category(2, "Funny"));
+        listCategories.add(new Category(3, "Programming"));
         return listCategories;
     }
 
     public List<Category> returnList(){
         return listCategories;
     }
+
+
+    public Category findCategory(int id) {
+        Category foundCategory = new Category();
+        try {
+            for (int i = 0; i < generateCategories().size(); i++) {
+                if (generateCategories().get(i).getId() == id) {
+                    foundCategory = generateCategories().get(i);
+                }
+            }
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage() + "NullPointerException founded");
+        }
+        return foundCategory;
+    }
+
 
 }
