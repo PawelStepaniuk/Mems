@@ -8,8 +8,16 @@ public class Gif {
     private String title;
     private String file;
     private String comment;
-
+    private boolean favorite;
     public Gif() {
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public Gif(String file) {
@@ -21,6 +29,14 @@ public class Gif {
         this.title = title;
         this.file = file;
         this.comment = comment;
+    }
+
+    public Gif(String author, String title, String file, String comment, boolean favorite) {
+        this.author = author;
+        this.title = title;
+        this.file = file;
+        this.comment = comment;
+        this.favorite = favorite;
     }
 
     public String getAuthor() {
