@@ -15,8 +15,9 @@ public class GifDaoImpl implements GifDao {
     }
 
     @Override
-    public List<Gif> findAll() {
-        return gifList;
+    public Gif findGif(String name) {
+        Gif gif = new Gif();
+        return gif;
     }
 
     @Override

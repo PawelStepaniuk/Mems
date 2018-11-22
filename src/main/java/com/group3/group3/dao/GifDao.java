@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface GifDao {
     void add(Gif gif);
-    List<Gif> findAll();
+    Gif findGif(String name);
     List<Gif> generateGifs();
 }
 
