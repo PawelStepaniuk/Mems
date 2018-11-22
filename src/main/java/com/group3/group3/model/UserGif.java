@@ -10,13 +10,14 @@ public class UserGif {
     private String name;
    static List<Gif> gifList = new ArrayList<>();
 
-   public void generateExampleData(){
+   public  List<Gif> generateExampleData(){
        GifDaoImpl gifDao = new GifDaoImpl();
        gifList.add(gifDao.generateGifs().get(0));
        gifList.add(gifDao.generateGifs().get(1));
        gifList.add(gifDao.generateGifs().get(2));
        gifList.add(gifDao.generateGifs().get(3));
        gifList.add(gifDao.generateGifs().get(4));
+       return gifList;
    }
 
     public UserGif(String name) {
@@ -59,7 +60,7 @@ public class UserGif {
 
     public UserGif() {
         this.name = name;
-        this.gifList = gifList;
+        this.gifList = generateExampleData();
     }
 
     public String getName() {
@@ -70,8 +71,5 @@ public class UserGif {
         this.name = name;
     }
 
-    public List<Gif> generatedUserGifList(){
-        List<Gif> gifList = new ArrayList<>();
-    return gifList;
-    }
+
 }

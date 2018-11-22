@@ -1,17 +1,22 @@
 package com.group3.group3.controller;
 
+
+import com.group3.group3.dao.CategoryDaoImpl;
 import com.group3.group3.dao.GifDaoImpl;
 import com.group3.group3.dao.GifsFromFiles;
+import com.group3.group3.model.Category;
 import com.group3.group3.model.Gif;
 import com.group3.group3.model.UserGif;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
 import java.util.List;
 // Po wpisaniu ścieżki głównej wyświetla wszystkie memy. Warto skorzystać z pliku home.html
 // Powinien zostać utworzony model Gif oraz interfejs GifDao,
@@ -21,10 +26,19 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+
     private GifDaoImpl gifDao = new GifDaoImpl();
     private GifsFromFiles gifsFromFiles = new GifsFromFiles();
     private UserGif userGif = new UserGif();
-//    private static List<Gif> gifList = ;
+    static List<Category> category = new CategoryDaoImpl().generateCategories();
+
+
+
+    @GetMapping("/categories")
+    public String showCategories(ModelMap map) {
+        map.addAttribute("categories", category);
+        return "categories";
+    }
 
     @GetMapping("/")
     public String home(ModelMap map) {
@@ -43,7 +57,7 @@ public class HomeController {
 
     @GetMapping("/favorites")
     public String favorites(ModelMap map, String userName) {
-        userGif.generateExampleData();
+
         map.put("gifs", userGif.getAllFavoriteGifs());
         return "favorites";
     }

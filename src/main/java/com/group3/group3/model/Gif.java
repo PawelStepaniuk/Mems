@@ -7,6 +7,8 @@ public class Gif {
     private String file;
     private String comment;
     private boolean favorite;
+    private int idCategory;
+
     public Gif() {
     }
 
@@ -32,12 +34,22 @@ public class Gif {
         this.comment = comment;
     }
 
-    public Gif(String author, String name, String file, String comment, boolean favorite) {
+
+    public Gif(String author, String name, String file, String comment, int idCategory, boolean favorite) {
         this.author = author;
         this.name = name;
         this.file = file;
         this.comment = comment;
+        this.idCategory = idCategory;
         this.favorite = favorite;
+    }
+
+    public Gif(String author, String name, String file, String comment, int idCategory) {
+        this.author = author;
+        this.name = name;
+        this.file = file;
+        this.comment = comment;
+        this.idCategory = idCategory;
     }
 
     public String getAuthor() {
@@ -70,6 +82,14 @@ public class Gif {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
     }
 
     @Override
