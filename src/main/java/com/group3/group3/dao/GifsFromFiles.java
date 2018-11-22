@@ -31,19 +31,18 @@ public class GifsFromFiles implements GifDao {
     public List<Gif> generateGifs() {
         List<Gif> nameList = new ArrayList<>();
         File f = new File("src\\main\\resources\\static\\gifs");
-try {
-    for (int i = 0; i < f.list().length; i++) {
-        if (f.list()[i].endsWith(".gif")) {
-            int len = f.list()[i].length();
-            String nameGif = f.list()[i].substring(0, len - 4);
-            nameList.add(new Gif(nameGif));
-        }
+        try {
+            for (int i = 0; i < f.list().length; i++) {
+                if (f.list()[i].endsWith(".gif")) {
+                    int len = f.list()[i].length();
+                    String nameGif = f.list()[i].substring(0, len - 4);
+                    nameList.add(new Gif(nameGif));
+                }
 
-    }
-}
-catch (NullPointerException e){
-    System.out.println(e.getMessage() + "Folder jest pusty");
-}
+            }
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage() + "Folder jest pusty");
+        }
         return nameList;
     }
 
