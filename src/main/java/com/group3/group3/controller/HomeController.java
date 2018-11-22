@@ -61,4 +61,7 @@ public class HomeController {
         map.put("gifs", userGif.getAllFavoriteGifs());
         return "favorites";
     }
+
+
+
 }
