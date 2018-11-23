@@ -45,7 +45,15 @@
     </div>
     <div class="gifs container">
         <div class="row">
-            <h1>Miejsce na wyświetlanie gifów:)</h1>
+            <table>
+                <th:block th:each="gif : ${gifs}">
+                    <tr>
+                        <p th:text="${gif.author}"></p>
+                        <img th:src= "@{${'/gifs/' + gif.file +'.gif'}}" />
+                        <p th:text="${gif.comment}"></p>
+                    </tr>
+                </th:block>
+            </table>
         </div>
     </div>
 

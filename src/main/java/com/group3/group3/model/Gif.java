@@ -7,9 +7,18 @@ public class Gif {
     private String file;
     private String comment;
     private int idCategory;
+    private boolean favorite;
 
 
     public Gif() {
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public Gif(String file) {
@@ -19,12 +28,22 @@ public class Gif {
         this.comment="Przykładowy komentarz";
     }
 
-    public Gif(String author, String title, String file, String comment) {
+    public Gif(String author, String name, String file, String comment) {
         this.author = author;
-        this.name = title;
+        this.name = name;
         this.file = file;
         this.comment = comment;
     }
+
+    public Gif(String author, String name, String file, String comment, int idCategory, boolean favorite) {
+        this.author = author;
+        this.name = name;
+        this.file = file;
+        this.comment = comment;
+        this.idCategory = idCategory;
+        this.favorite = favorite;
+    }
+
 
     public Gif(String author, String name, String file, String comment, int idCategory) {
         this.author = author;
@@ -81,7 +100,7 @@ public class Gif {
                 ", name='" + name + '\'' +
                 ", file='" + file + '\'' +
                 ", comment='" + comment + '\'' +
+                ", favorite=" + favorite +
                 '}';
     }
-
 }

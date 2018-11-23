@@ -1,20 +1,20 @@
 package com.group3.group3.controller;
 
+
 import com.group3.group3.dao.CategoryDaoImpl;
-import com.group3.group3.dao.GifDao;
 import com.group3.group3.dao.GifDaoImpl;
 import com.group3.group3.dao.GifsFromFiles;
-
 import com.group3.group3.model.Category;
 import com.group3.group3.model.Gif;
+import com.group3.group3.model.UserGif;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +26,14 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    GifsFromFiles gifsFromFiles = new GifsFromFiles();
     // CategoryDaoImpl category = new CategoryDaoImpl();
+
+    private GifDaoImpl gifDao = new GifDaoImpl();
+    private GifsFromFiles gifsFromFiles = new GifsFromFiles();
+    private UserGif userGif = new UserGif();
     static List<Category> category = new CategoryDaoImpl().generateCategories();
     CategoryDaoImpl categoryFromImpl = new CategoryDaoImpl();
+
 
 
 
@@ -38,7 +42,6 @@ public class HomeController {
         map.addAttribute("categories", category);
         return "categories";
     }
-
 
     @GetMapping("/")
     public String home(ModelMap map) {
@@ -49,10 +52,9 @@ public class HomeController {
 
     @RequestMapping("/gif/{name}")
     public String gif(@PathVariable String name, ModelMap map) {
+
+
         Gif gif = gifsFromFiles.findGif(name);
-        //   System.out.println("Szukamy gifu o nazwie "+ name + " i znalazło: " + gif.toString());
-        //   System.out.println("----------------------");
-        //   System.out.println("Gif który przekazujemy do html"+gif.toString());
         map.put("gif", gif);
         return "gif";
     }
@@ -60,42 +62,30 @@ public class HomeController {
     @GetMapping("/category/{id}")
         public String categoryById(@PathVariable int id, ModelMap map) {
         Category category = categoryFromImpl.generateCategories().get(id);
-        Gif gifs = new Gif();
+        List<Gif> listGif = new GifDaoImpl().generateGifs();
+        List<Gif> newListGif = new ArrayList<>();
 
-
+        for(int i = 0; i < listGif.size(); i++){
+            if(listGif.get(i).getIdCategory() == id)
+            {
+                newListGif.add(listGif.get(i));
+            }
+        }
         map.put("category", category);
+        map.put("gif", newListGif);
         return "category";
     }
 
-        /*
-        List<Gif> newGif = new GifDaoImpl().generateGifs();
-        List<Gif> gifToShow = new ArrayList<>();
-        for (Gif gif : newGif){
-            if(id == gif.getIdCategory()){
-                gifToShow.add(gif);
-            }
-        }
 
-        map.put("category.name", gifToShow);
+    @GetMapping("/favorites")
+    public String favorites(ModelMap map, String userName) {
 
-        return "category";
-        }
-
-        /*
-        List<Gif> newGif = new GifDaoImpl().generateGifs();
-        List<Gif> gifToShow = new ArrayList<>();
-        for (Gif gif : newGif){
-            if(id == gif.getIdCategory()){
-                gifToShow.add(gif);
-            }
-        }
-
-
+        map.put("gifs", userGif.getAllFavoriteGifs());
+        return "favorites";
     }
-    /*    Category cat = categoryFromImpl.findCategory(id);
-        map.put("category", cat);
-        return "category";
-    }*/
+
+
+
 }
 
 
