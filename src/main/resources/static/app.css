@@ -4,6 +4,27 @@ body {
     font-family: 'varela round', sans-serif;
 }
 
+
+.memCell {
+    background: lightcyan;
+    border: solid 1px blue;
+}
+
+.imageCell {
+    margin: 5px;
+    padding: 5px;
+    width: 400px;
+}
+
+#myFooter {
+    position:sticky;
+    bottom:0;
+    width:100%;
+    color: white;
+		/* Height of the footer */
+    background:#a27;
+}
+
 nav {
     background-color: #896bb3;
     box-shadow: none;
